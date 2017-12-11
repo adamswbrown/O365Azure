@@ -1,0 +1,1 @@
+Get-MsolUser -all | Where { -Not $_.UserPrincipalName.ToLower().StartsWith(“admin@”) } | ForEach { Set-MsolUserPrincipalName -ObjectId $_.ObjectId -NewUserPrincipalName ($_.UserPrincipalName.Split(“@”)[0] + “@example.com”) }
